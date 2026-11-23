@@ -87,6 +87,7 @@ Inclure le code fourni, les trois Dockerfiles, les .dockerignore, compose.yaml, 
 Ajouter ici :
 
 - Les noms du binôme et le groupe.
+
 Tristan Fabre A2, Florian Pleigneur A2 
 - Vos commandes de lancement et d’arrêt.
 
