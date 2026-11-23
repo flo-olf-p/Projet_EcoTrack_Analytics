@@ -93,7 +93,7 @@ Tristan Fabre A2, Florian Pleigneur A2
 
 python :
 
-python app.py
+docker compose up -d
 
 et à faire un ctrl+c pour quitter.
 - Vos preuves : commande ou action, résultat observé et explication.
