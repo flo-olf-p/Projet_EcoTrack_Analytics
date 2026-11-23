@@ -100,6 +100,7 @@ et à faire un ctrl+c pour quitter.
 
 python :
 ![preuve_image](preuve/image.png)
+![docker_start](preuve/docker%20start.png)
 - Les vérifications du calcul, de la persistance, des réseaux et du secret.
 
 Exclure db_password.txt, .env, .venv et node_modules. Après un nouveau clonage, un lecteur doit pouvoir recréer le secret et démarrer l’application.
