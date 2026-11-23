@@ -1,0 +1,66 @@
+services: 
+
+    db:
+
+        image: postgres:15-alpine
+        secrets:
+            - database_pwd
+        environment:
+            POSTGRES_PASSWORD_FILE: /run/secrets/database_pwd
+            POSTGRES_DB: appdb
+            POSTGRES_USER: etudiant
+        volumes:
+            - pg_data:/var/lib/postgresql/data
+        networks:
+            - reseau_interne
+        healthcheck: 
+            test: ["CMD-SHELL", "pg_isready -U etudiant -d appdb"]
+
+    api:
+
+        image: node:20-alpine
+        secrets:
+            - database_pwd
+        working_dir: /app
+        volumes:
+            - ./api:/app
+        command: sh -c "npm install && npm start"
+        ports:
+            - "5000:5000"
+        environment:
+            POSTGRES_PASSWORD_FILE: /run/secrets/database_pwd
+            POSTGRES_DB: appdb
+            POSTGRES_USER: etudiant
+        depends_on:
+            db:
+                condition: service_healthy
+        networks:
+            - reseau_interne
+            - reseau_public
+
+    frontend:
+
+        image: node:20-alpine
+        working_dir: /app
+        volumes:
+            - ./frontend:/app
+        ports:
+            - "3000:3000"
+        command: sh -c "npm install && npm start"
+        depends_on:
+            - api
+        networks:
+            - reseau_public
+
+# Déclaration des réseaux virtuels isolés
+networks:
+    reseau_interne:
+    reseau_public:
+
+# Déclaration des volumes persistants
+volumes:
+    pg_data:
+
+secrets:
+    database_pwd:
+        file: ./db_password.txt
