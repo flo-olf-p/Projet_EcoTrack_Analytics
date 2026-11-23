@@ -89,6 +89,7 @@ Ajouter ici :
 - Les noms du binôme et le groupe.
 Tristan Fabre A2, Florian Pleigneur A2 
 - Vos commandes de lancement et d’arrêt.
+
 python :
 Pour initialiser l'application python on doit lancer les commandes :
 python -m venv .venv .\.venv\Scripts\Activate.ps1
