@@ -92,17 +92,6 @@ Tristan Fabre A2, Florian Pleigneur A2
 
 python :
 
-Pour initialiser l'application python on doit lancer les commandes :
-
-python -m venv .venv .\.venv\Scripts\Activate.ps1
-
-python3 -m venv .venv source .venv/bin/activate
-
-python -m pip install -r requirements.txt
-python -c "import sys; print(sys.executable)"
-
-et ensuite, une fois initialisé on a juste à lancé :
-
 python app.py
 
 et à faire un ctrl+c pour quitter.
