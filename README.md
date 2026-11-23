@@ -88,10 +88,12 @@ Ajouter ici :
 
 - Les noms du binôme et le groupe.
 
-Tristan Fabre A2, Florian Pleigneur A2 
+    - Tristan Fabre A2
+    - Florian Pleigneur A2
+      
 - Vos commandes de lancement et d’arrêt.
 
-Après avoir cloner le projet, il est nécessaire de recréer votre secret. Pour cela, créer un fichier nommé "db_password.txt" à la racine du projet, puis insérez votre mot de passe à l'intérieur.
+Après avoir cloné le projet, il est nécessaire de recréer votre secret. Pour cela, créer un fichier nommé "db_password.txt" à la racine du projet, puis insérez votre mot de passe à l'intérieur.
 
 Ensuite, vous devez entrez la commande suivante dans votre terminal : "docker compose up -d --build"
 
