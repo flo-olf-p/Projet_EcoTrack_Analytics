@@ -1,7 +1,6 @@
-services: 
+services:
 
     db:
-
         image: postgres:15-alpine
         secrets:
             - database_pwd
@@ -13,24 +12,22 @@ services:
             - pg_data:/var/lib/postgresql/data
         networks:
             - reseau_interne
-        healthcheck: 
+        healthcheck:
             test: ["CMD-SHELL", "pg_isready -U etudiant -d appdb"]
 
     api:
-
-        image: node:20-alpine
+        build: ./api
         secrets:
             - database_pwd
-        working_dir: /app
-        volumes:
-            - ./api:/app
-        command: sh -c "npm install && npm start"
         ports:
             - "5000:5000"
         environment:
             POSTGRES_PASSWORD_FILE: /run/secrets/database_pwd
             POSTGRES_DB: appdb
             POSTGRES_USER: etudiant
+            POSTGRES_HOST: db
+            POSTGRES_PORT: 5432
+            WORKER_URL: http://worker:8000
         depends_on:
             db:
                 condition: service_healthy
@@ -39,18 +36,23 @@ services:
             - reseau_public
 
     frontend:
-
-        image: node:20-alpine
-        working_dir: /app
-        volumes:
-            - ./frontend:/app
+        build: ./frontend
         ports:
             - "3000:3000"
-        command: sh -c "npm install && npm start"
         depends_on:
             - api
         networks:
             - reseau_public
+
+    worker:
+        build: ./worker
+        ports:
+            - "8000:8000"
+        depends_on:
+            db:
+                condition: service_healthy
+        networks:
+            - reseau_interne
 
 # Déclaration des réseaux virtuels isolés
 networks:
@@ -61,6 +63,7 @@ networks:
 volumes:
     pg_data:
 
+# Déclaration des secrets
 secrets:
     database_pwd:
         file: ./db_password.txt
