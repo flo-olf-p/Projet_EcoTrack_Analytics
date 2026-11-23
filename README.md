@@ -91,17 +91,41 @@ Ajouter ici :
 Tristan Fabre A2, Florian Pleigneur A2 
 - Vos commandes de lancement et d’arrêt.
 
-python :
+Après avoir cloner le projet, il est nécessaire de recréer votre secret. Pour cela, créer un fichier nommé "db_password.txt" à la racine du projet, puis insérez votre mot de passe à l'intérieur.
 
-docker compose up -d
+Ensuite, vous devez entrez la commande suivante dans votre terminal : "docker compose up -d --build"
 
-et à faire un ctrl+c pour quitter.
+Pour arrêter les services, vous devrez faire la commande suivante : "docker compose down -v"
+
+
 - Vos preuves : commande ou action, résultat observé et explication.
 
 python :
 ![preuve_image](preuve/image.png)
 ![docker_start](preuve/docker%20start.png)
+
+Le test de création d'un environnement virtuel en python fonctionne donc comme attendu.
+
+![commandes_build](preuve/commandes.png)
+![commande_liste](preuve/commandes2.png)
+
+Il est donc possible d'observer que les différents conteneurs ainsi que les services qu'ils regroupent démarrent correctement à la suite des commandes.
+
 - Les vérifications du calcul, de la persistance, des réseaux et du secret.
+
+Après avoir lancé un calcul depuis l'interface frontend, l'historique se met bien à jour du côté du frontend ainsi que de l'api.
+Les résultats sont également correct, comme vous pouvez le constater sur les captures suivantes. 
+
+![commande_liste](preuve/interface_frontend.png)
+![commande_liste](preuve/historique_api.png)
+
+Pour tester la persistance des données, nous arrêtons les conteneurs en cours, puis les relançons.
+
+![commande_liste](preuve/arret_conteneurs.png)
+
+En retournant sur l'historique de l'api, les données des anciens calculs sont bien toujours présentes !
+
+
 
 Exclure db_password.txt, .env, .venv et node_modules. Après un nouveau clonage, un lecteur doit pouvoir recréer le secret et démarrer l’application.
 
