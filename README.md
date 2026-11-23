@@ -103,6 +103,7 @@ python app.py
 
 et à faire un ctrl+c pour quitter.
 - Vos preuves : commande ou action, résultat observé et explication.
+
 python :
 ![preuve_image](preuve/image.png)
 - Les vérifications du calcul, de la persistance, des réseaux et du secret.
