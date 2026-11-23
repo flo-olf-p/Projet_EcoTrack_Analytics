@@ -104,10 +104,10 @@ Pour arrêter les services, vous devrez faire la commande suivante : "docker com
 
 python :
 ![preuve_image](preuve/image.png)
-![docker_start](preuve/docker%20start.png)
 
 Le test de création d'un environnement virtuel en python fonctionne donc comme attendu.
 
+![docker_start](preuve/docker%20start.png)
 ![commandes_build](preuve/commandes.png)
 ![commande_liste](preuve/commandes2.png)
 
@@ -115,17 +115,17 @@ Il est donc possible d'observer que les différents conteneurs ainsi que les ser
 
 - Les vérifications du calcul, de la persistance, des réseaux et du secret.
 
-Après avoir lancé un calcul depuis l'interface frontend, l'historique se met bien à jour du côté du frontend ainsi que de l'api.
+Après avoir lancé un calcul depuis l'interface frontend, l'historique se met bien à jour du côté du frontend ainsi que de l'API.
 Les résultats sont également correct, comme vous pouvez le constater sur les captures suivantes. 
 
 ![commande_liste](preuve/interface_frontend.png)
 ![commande_liste](preuve/historique_api.png)
 
-Pour tester la persistance des données, nous arrêtons les conteneurs en cours, puis les relançons.
+Pour tester la persistance des données, nous arrêtons les conteneurs en cours, à l'aide de la commande suivante, avant de les relancer.
 
 ![commande_liste](preuve/arret_conteneurs.png)
 
-En retournant sur l'historique de l'api, les données des anciens calculs sont bien toujours présentes !
+En retournant sur l'historique de l'API, les données des anciens calculs sont toujours présentes !
 
 
 
